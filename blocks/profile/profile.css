@@ -1,0 +1,21 @@
+.profile {
+    min-width: 880px;
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: flex-start;
+    padding-top: 40px;
+}
+
+@media screen and (max-width: 1024px) {
+    .profile {
+        min-width: calc(282px + (880 - 282) * ((100vw - 320px) / (1024 - 320)));
+        margin: auto;
+    }
+  }
+
+@media screen and (max-width: 425px) {
+    .profile {
+        flex-direction: column;
+        padding-top: 42px;
+    }
+  }

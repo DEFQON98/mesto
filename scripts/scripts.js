@@ -11,6 +11,13 @@ let nameInput = popup.querySelector('.popup__input_type_name');
 let jobInput = popup.querySelector('.popup__input_type_job');
 let closePopup = popup.querySelector('.popup__button-close');
 
+let elementBtnLike = document.querySelector('.elements__button-like'); // Переменная лайка на карточке
+
+// Функция лайка на карточке
+function clickLikeElement () {
+    let BtnLike = elementBtnLike.classList.toggle('elements__button-like_active');
+}
+
 // Функция открытия формы
 function handleOpenProfileForm() {
     let openPopup = popup.classList.add('popup_opened');
@@ -34,3 +41,4 @@ function handleCloseProfileForm () {
 profileButton.addEventListener('click', handleOpenProfileForm);
 popupForm.addEventListener('submit', handleFormSubmit);
 closePopup.addEventListener('click', handleCloseProfileForm);
+elementBtnLike.addEventListener('click', clickLikeElement);

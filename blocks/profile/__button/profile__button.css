@@ -14,3 +14,11 @@
 .profile__button:hover {
     opacity: 0.6;
 }
+
+@media screen and (max-width: 700px) {
+    .profile__button {
+        min-width: 18px;
+        min-height: 18px;
+        background-size: 7.5px 7.5px;
+    }
+}

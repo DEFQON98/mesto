@@ -11,11 +11,18 @@
         min-width: calc(282px + (880 - 282) * ((100vw - 320px) / (1024 - 320)));
         margin: auto;
     }
-  }
+}
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 900px) {
+    .profile {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 700px) {
     .profile {
         flex-direction: column;
         padding-top: 42px;
     }
-  }
+}

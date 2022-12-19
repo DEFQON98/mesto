@@ -9,7 +9,6 @@ let popupForm = popup.querySelector('.popup__form');
 let nameInput = popup.querySelector('.popup__input_type_name');
 let jobInput = popup.querySelector('.popup__input_type_job');
 let closePopup = popup.querySelector('.popup__button-close');
-let userButtonSubmit = popup.querySelector('.popup__button-submit');
 
 // Функция открытия формы
 function handleOpenProfileForm() {
@@ -32,5 +31,5 @@ function handleCloseProfileForm () {
 
 profileButton.addEventListener('click', handleOpenProfileForm);
 popupForm.addEventListener('submit', handleFormSubmit);
-userButtonSubmit.addEventListener('click', handleCloseProfileForm);
+popupForm.addEventListener('submit', handleCloseProfileForm);
 closePopup.addEventListener('click', handleCloseProfileForm);

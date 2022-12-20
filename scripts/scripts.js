@@ -22,6 +22,7 @@ function handleFormSubmit (evt) {
     evt.preventDefault();
     userName.textContent = nameInput.value;
     userJob.textContent = jobInput.value;
+    popup.classList.remove('popup_opened');
 }
 
 // Функция закрытия формы без изменений
@@ -31,5 +32,4 @@ function handleCloseProfileForm () {
 
 profileButton.addEventListener('click', handleOpenProfileForm);
 popupForm.addEventListener('submit', handleFormSubmit);
-popupForm.addEventListener('submit', handleCloseProfileForm);
 closePopup.addEventListener('click', handleCloseProfileForm);

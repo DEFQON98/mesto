@@ -51,7 +51,6 @@ const createCard = (img) => {
 
     elementsDelete.addEventListener('click', deleteCard);
     elementsLike.addEventListener('click', likeCard);
-  //  elementsImage.addEventListener('click', spreadCard);
 
     return elementsCard;
 }

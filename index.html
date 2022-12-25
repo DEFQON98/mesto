@@ -55,104 +55,22 @@
         ></button>
       </section>
       <section class="elements">
-        <ul class="elements__list">
-          <li class="elements__card">
-            <img
-              src="./images/elbrus.jpg"
-              class="elements__image"
-              alt="Эльбрус"
-            >
-            <div class="elements__description-container">
-              <h2 class="elements__description-title">Эльбрус</h2>
-              <button
-                type="button"
-                aria-label="Лайк"
-                class="elements__button-like"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              src="./images/dombai.jpg"
-              class="elements__image"
-              alt="Домбай"
-            >
-            <div class="elements__description-container">
-              <h2 class="elements__description-title">Домбай</h2>
-              <button
-                type="button"
-                aria-label="Лайк"
-                class="elements__button-like"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              src="./images/karachaevsk.jpg"
-              class="elements__image"
-              alt="Карачаевск"
-            >
-            <div class="elements__description-container">
-              <h2 class="elements__description-title">Карачаевск</h2>
-              <button
-                type="button"
-                aria-label="Лайк"
-                class="elements__button-like"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              src="./images/karachaevsk.jpg"
-              class="elements__image"
-              alt="Карачаевск"
-            >
-            <div class="elements__description-container">
-              <h2 class="elements__description-title">Карачаевск</h2>
-              <button
-                type="button"
-                aria-label="Лайк"
-                class="elements__button-like"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              src="./images/dombai.jpg"
-              class="elements__image"
-              alt="Домбай"
-            >
-            <div class="elements__description-container">
-              <h2 class="elements__description-title">Домбай</h2>
-              <button
-                type="button"
-                aria-label="Лайк"
-                class="elements__button-like"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              src="./images/elbrus.jpg"
-              class="elements__image"
-              alt="Эльбрус"
-            >
-            <div class="elements__description-container">
-              <h2 class="elements__description-title">Эльбрус</h2>
-              <button
-                type="button"
-                aria-label="Лайк"
-                class="elements__button-like"
-              ></button>
-            </div>
-          </li>
-        </ul>
+          <template class="elements__template">
+            <li class="elements__card">
+              <img src="#" class="elements__image" alt="">
+              <button type="button" aria-label="Delete" class="elements__button-delete"></button>
+              <div class="elements__description-container">
+                <h2 class="elements__description-title"></h2>
+                <button type="button" aria-label="Лайк" class="elements__button-like"></button>
+              </div>
+            </li>
+          </template>
       </section>
     </main>
     <footer class="footer">
-      <p class="footer__copyright">&copy; 2022. Диулин Владислав</p>
+      <p class="footer__copyright">&copy; 2022. Mesto Russia | Диулин Владислав</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__type_user">
       <div class="popup__container">
         <h2 class="popup__header">Редактировать профиль</h2>
         <form
@@ -173,6 +91,35 @@
             type="submit"
             class="popup__button-submit"
           >Сохранить</button>
+        </form>
+        <button
+          type="button"
+          aria-label="Закрыть"
+          class="popup__button-close"
+        ></button>
+      </div>
+    </div>
+    <div class="popup popup__card_editors">
+      <div class="popup__container">
+        <h2 class="popup__header">Новое место</h2>
+        <form
+          class="popup__form popup__form_type_cards"
+          name="popupCardsForm"
+        >
+          <input
+            class="popup__input popup__input_type_description"
+            placeholder="Название"
+            name="typeDescription"
+          >
+          <input
+            class="popup__input popup__input_type_link"
+            placeholder="Ссылка на картинку"
+            name="typeLink"
+          >
+          <button
+            type="submit"
+            class="popup__button-submit"
+          >Создать</button>
         </form>
         <button
           type="button"

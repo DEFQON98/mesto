@@ -51,6 +51,7 @@ const createCard = (img) => {
 
     elementsDelete.addEventListener('click', deleteCard);
     elementsLike.addEventListener('click', likeCard);
+    elementsImage.addEventListener('click', openCard);
 
     return elementsCard;
 }
@@ -87,8 +88,28 @@ const handleCardForm = (evt) => {
 }
 
 
+
+// ОТКРЫТИЕ КАРТНКИ 
+const popupPic = document.querySelector('.popup_type_pic');
+const picOpen = popupPic.querySelector(".popup__pic");
+const picTextOpen = popupPic.querySelector(".popup__text");
+const buttonClosePicPopup = popupPic.querySelector(".popup__close");
+
+const openCard = (evt) => {
+    popupPic.classList.add('popup_opened');
+
+    const link = evt.target.closest(".elements__card").querySelector(".elements__image").getAttribute("src");
+    const name = evt.target.closest(".elements__card").querySelector(".elements__description-title").textContent;
+
+    picOpen.setAttribute("alt", name);
+    picOpen.setAttribute("src", link);
+    picTextOpen.textContent = name;
+}
+
+
 initialCards.forEach( item => renderCard(elements, createCard(item), false) );
 
+//
 const content = document.querySelector('.content');
 const profileButton = content.querySelector('.profile__button'); // Переменная кнопки редакирования профиля
 const userName = content.querySelector('.profile__name'); // Переменная имени профиля 

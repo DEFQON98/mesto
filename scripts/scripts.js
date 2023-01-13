@@ -1,36 +1,8 @@
-// КАРТОЧКИ
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
 // Переменные логичесской формы добавления карточек
 const popupCard = document.querySelector('.popup_card_editors');
-const popupCardsForm = popupCard.querySelector('.popup__form_type_cards');
-const typeDescription = popupCard.querySelector('.popup__input_type_description');
-const typeLink = popupCard.querySelector('.popup__input_type_link');
+const popupCardForm = popupCard.querySelector('.popup__form_type_cards');
+const inputDescription = popupCard.querySelector('.popup__input_type_description');
+const inputLink = popupCard.querySelector('.popup__input_type_link');
 
 const elements = document.querySelector('.elements');
 const elementsTemplate = document.querySelector('.elements__template').content;
@@ -38,11 +10,11 @@ const elementsTemplate = document.querySelector('.elements__template').content;
 // Добавить картчку
 const createCard = (img) => {
 
-    const elementsCard = elementsTemplate.querySelector('.elements__card').cloneNode(true);
-    const elementsImage = elementsCard.querySelector('.elements__image');  // Переменная изображения карочки
-    const elementsTitle = elementsCard.querySelector('.elements__description-title'); // Переменная названия карочки
-    const elementsLike = elementsCard.querySelector('.elements__button-like'); // Переменная кнопки ЛАЙК
-    const elementsDelete = elementsCard.querySelector('.elements__button-delete'); // Переменная кнопки УДАЛИТЬ
+    const newCard = elementsTemplate.querySelector('.elements__card').cloneNode(true);
+    const elementsImage = newCard.querySelector('.elements__image');  // Переменная изображения карочки
+    const elementsTitle = newCard.querySelector('.elements__description-title'); // Переменная названия карочки
+    const elementsLike = newCard.querySelector('.elements__button-like'); // Переменная кнопки ЛАЙК
+    const elementsDelete = newCard.querySelector('.elements__button-delete'); // Переменная кнопки УДАЛИТЬ
 
     // Наполнение каточек
     elementsImage.setAttribute("alt", img.name);
@@ -53,7 +25,7 @@ const createCard = (img) => {
     elementsLike.addEventListener('click', likeCard);
     elementsImage.addEventListener('click', openCard);
 
-    return elementsCard;
+    return newCard;
 }
 
 const renderCard = (container, cardObject, place = false) => {
@@ -77,13 +49,10 @@ const likeCard = (evt) => {
 
 // Функция сохранения изменений формы Карточек
 const handleCardForm = (evt) => {
-    const popupType = evt.target.closest(".popup");
     evt.preventDefault();
-    if (typeDescription.value !== "" && typeLink.value !== "") {
-        const cardToAdd = {name: typeDescription.value, link: typeLink.value};
+        const cardToAdd = {name: inputDescription.value, link: inputLink.value};
         renderCard(elements, createCard(cardToAdd), true);
-    }
-    closePopup(popupType);
+    closePopup(popupCard);
     evt.currentTarget.reset();
 }
 
@@ -91,36 +60,35 @@ const handleCardForm = (evt) => {
 
 // ОТКРЫТИЕ КАРТНКИ 
 const popupPic = document.querySelector('.popup_type_pic');
-const picOpen = popupPic.querySelector(".popup__pic");
-const picTextOpen = popupPic.querySelector(".popup__text");
-const buttonClosePicPopup = popupPic.querySelector(".popup__close");
+const popupPicImage = popupPic.querySelector(".popup__pic");
+const popupPicText = popupPic.querySelector(".popup__text");
 
 const openCard = (evt) => {
-    popupPic.classList.add('popup_opened');
+     openPopup(popupPic);
 
-    const link = evt.target.closest(".elements__card").querySelector(".elements__image").getAttribute("src");
-    const name = evt.target.closest(".elements__card").querySelector(".elements__description-title").textContent;
+    const link = evt.currentTarget.getAttribute("src");
+    const name = evt.currentTarget.getAttribute("alt");
 
-    picOpen.setAttribute("alt", name);
-    picOpen.setAttribute("src", link);
-    picTextOpen.textContent = name;
+    popupPicImage.setAttribute("alt", name);
+    popupPicImage.setAttribute("src", link);
+    popupPicText.textContent = name;
 }
 
 
-initialCards.forEach( item => renderCard(elements, createCard(item), false) );
+initialCards.forEach( item => renderCard(elements, createCard(item)) );
 
 //
 const content = document.querySelector('.content');
-const profileButton = content.querySelector('.profile__button'); // Переменная кнопки редакирования профиля
+const userProfileButton = content.querySelector('.profile__button'); // Переменная кнопки редакирования профиля
 const userName = content.querySelector('.profile__name'); // Переменная имени профиля 
 const userJob = content.querySelector('.profile__job'); // Переменная "О себе" профиля
 const cardsAdd = content.querySelector('.profile__button-add'); // Переменная добавления карточки
-const popup = document.querySelector('.popup') // Общая переменная формы поп-ап
 const closeButtons = document.querySelectorAll('.popup__button-close'); // Общая переменная зкарытия формы
+const openButtons = document.querySelector('.popup') // Общая переменная открытия формы поп-ап
 
 // Переменные логической формы редактирования пользователя
 const popupUser = document.querySelector('.popup_type_user');
-const popupForm = popupUser.querySelector('.popup__form');
+const popupUserForm = popupUser.querySelector('.popup__form');
 const nameInput = popupUser.querySelector('.popup__input_type_name');
 const jobInput = popupUser.querySelector('.popup__input_type_job');
 
@@ -131,30 +99,38 @@ const closePopup = (popup) => {
 
 // Функция открытия формы редактировани пользователя
 const handleOpenProfileForm = () => {
-    popupUser.classList.add('popup_opened');
+    openPopup(popupUser);
     nameInput.value = userName.textContent;
     jobInput.value = userJob.textContent;
 }
 
 // Функция сохранения изменений формы редактирования пользователя
-const handleFormSubmit = evt => {
-    const popupType = evt.target.closest(".popup");
+const handleFormUserSubmit = evt => {
     evt.preventDefault();
     userName.textContent = nameInput.value;
     userJob.textContent = jobInput.value;
-    closePopup(popupType);
+    closePopup(popupUser);          
 }
 
 // Функция открытия формы добавления карочки
 const handleOpenCardsForm = () => {
-    popupCard.classList.add('popup_opened');
+    openPopup(popupCard);
 }
 
-profileButton.addEventListener('click', handleOpenProfileForm); // Присваиваем обработчик откртия редактирования пользователя
-popupForm.addEventListener('submit', handleFormSubmit); // Присваиваем обработчик Пользователя
-popupCardsForm.addEventListener('submit', handleCardForm); // Присваиваем обработчик Карточки
+//Функция открыия ФОРМ
+const openPopup = (popup) => {
+    popup.classList.add('popup_opened');
+}
+
+userProfileButton.addEventListener('click', handleOpenProfileForm); // Присваиваем обработчик откртия редактирования пользователя
+popupUserForm.addEventListener('submit', handleFormUserSubmit); // Присваиваем обработчик Пользователя
+popupCardForm.addEventListener('submit', handleCardForm); // Присваиваем обработчик Карточки
 cardsAdd.addEventListener('click', handleOpenCardsForm);  // Присваиваем обработчик открытия добавления карточки
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+openButtons.forEach((button) => {
+    const popup = button.closest('.popup');
+    button.addEventListener('click', () => openPopup(popup));
+  });

@@ -23,6 +23,8 @@
       href="./pages/index.css"
     >
     <title>Mesto</title>
+    <script defer src="./scripts/constants.js"></script>
+    <script defer src="./scripts/scripts.js"></script>
   </head>
   <body class="page">
     <header class="header">
@@ -45,6 +47,7 @@
             <button
               type="button"
               class="profile__button"
+              aria-label="Редактировать профиль"
             ></button>
           </div>
           <p class="profile__job">Исследователь океана</p>
@@ -52,13 +55,14 @@
         <button
           type="button"
           class="profile__button-add"
+          aria-label="Добавить карточку"
         ></button>
       </section>
       <section class="elements">
           <template class="elements__template">
             <li class="elements__card">
-              <img src="#" class="elements__image" alt="">
-              <button type="button" aria-label="Delete" class="elements__button-delete"></button>
+              <img src="#" class="elements__image" alt="Без картинки">
+              <button type="button" aria-label="Удалить" class="elements__button-delete"></button>
               <div class="elements__description-container">
                 <h2 class="elements__description-title"></h2>
                 <button type="button" aria-label="Лайк" class="elements__button-like"></button>
@@ -77,12 +81,12 @@
           class="popup__form"
           name="popupForm"
         >
-          <input
+          <input required
             class="popup__input popup__input_type_name"
             placeholder="Имя"
             name="typeName"
           >
-          <input
+          <input required
             class="popup__input popup__input_type_job"
             placeholder="О себе"
             name="typeJob"
@@ -106,15 +110,16 @@
           class="popup__form popup__form_type_cards"
           name="popupCardsForm"
         >
-          <input
+          <input required
             class="popup__input popup__input_type_description"
             placeholder="Название"
             name="typeDescription"
           >
-          <input
+          <input required
             class="popup__input popup__input_type_link"
             placeholder="Ссылка на картинку"
             name="typeLink"
+            type="url"
           >
           <button
             type="submit"
@@ -132,9 +137,8 @@
       <div class="popup__container-pic">
           <img src="#" alt="Без картинки" class="popup__pic">
           <h2 class="popup__text">Без картинки</h2>
-          <button class="popup__button-close" type="button"></button>
+          <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
       </div>
     </div>
-    <script src="./scripts/scripts.js"></script>
   </body>
 </html>

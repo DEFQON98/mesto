@@ -27,7 +27,7 @@ const initialCards = [
 ];
 
 // Переменные логичесской формы добавления карточек
-const popupCard = document.querySelector('.popup__card_editors');
+const popupCard = document.querySelector('.popup_card_editors');
 const popupCardsForm = popupCard.querySelector('.popup__form_type_cards');
 const typeDescription = popupCard.querySelector('.popup__input_type_description');
 const typeLink = popupCard.querySelector('.popup__input_type_link');
@@ -119,7 +119,7 @@ const popup = document.querySelector('.popup') // Общая переменна�
 const closeButtons = document.querySelectorAll('.popup__button-close'); // Общая переменная зкарытия формы
 
 // Переменные логической формы редактирования пользователя
-const popupUser = document.querySelector('.popup__type_user');
+const popupUser = document.querySelector('.popup_type_user');
 const popupForm = popupUser.querySelector('.popup__form');
 const nameInput = popupUser.querySelector('.popup__input_type_name');
 const jobInput = popupUser.querySelector('.popup__input_type_job');

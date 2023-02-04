@@ -25,6 +25,7 @@
     <title>Mesto</title>
     <script defer src="./scripts/constants.js"></script>
     <script defer src="./scripts/scripts.js"></script>
+    <script defer src="./scripts/validate.js"></script>
   </head>
   <body class="page">
     <header class="header">
@@ -80,17 +81,32 @@
         <form
           class="popup__form"
           name="popupForm"
+          novalidate
         >
+          <label class="popup__input-window">
           <input required
             class="popup__input popup__input_type_name"
             placeholder="Имя"
             name="typeName"
+            type="text"
+            id="input-name"
+            minlength="2"
+            maxlength="40"
           >
+          <span class="input-name-error popup__error"></span>
+          </label>
+          <label class="popup__input-window">
           <input required
             class="popup__input popup__input_type_job"
             placeholder="О себе"
             name="typeJob"
+            type="text"
+            id="input-job"
+            minlength="2"
+            maxlength="200"
           >
+          <span class="input-job-error popup__error"></span>
+          </label>  
           <button
             type="submit"
             class="popup__button-submit"
@@ -109,18 +125,30 @@
         <form
           class="popup__form popup__form_type_cards"
           name="popupCardsForm"
+          novalidate
         >
-          <input required
-            class="popup__input popup__input_type_description"
-            placeholder="Название"
-            name="typeDescription"
-          >
-          <input required
-            class="popup__input popup__input_type_link"
-            placeholder="Ссылка на картинку"
-            name="typeLink"
-            type="url"
-          >
+          <label class="popup__input-window">
+            <input required
+              class="popup__input popup__input_type_description"
+              placeholder="Название"
+              name="typeDescription"
+              type="text"
+              id="input-type-description"
+              minlength="2"
+              maxlength="30"
+            >
+            <span class="input-type-description-error popup__error"></span> 
+          </label>
+          <label class="popup__input-window">
+            <input required
+              class="popup__input popup__input_type_link"
+              placeholder="Ссылка на картинку"
+              name="typeLink"
+              type="url"
+              id="input-type-link"
+            >
+            <span class="input-type-link-error popup__error"></span>
+          </label>
           <button
             type="submit"
             class="popup__button-submit"
